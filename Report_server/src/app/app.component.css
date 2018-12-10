@@ -1,0 +1,28 @@
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th {
+  height: 30px;
+}
+.gn {
+  background-color:   #0084c7 ;
+}
+.rd {
+  background-color:  #cb4335
+;
+}
+.yw {
+  background-color: #52be80;
+}
+.gy {
+  background-color: gray;
+}
+.wt {
+  background-color:#808b96;
+}

@@ -1,2 +1,27 @@
 
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<br>
+
+<table align="center">
+	
+	<thead class="yw">
+		<th>Passed</th>
+		<th>Failed</th>
+		<th>Time Executed</th>
+		<th>Test Name</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let record of data" [class.gn]="record.no_passed==1" [class.rd]="record.no_failed==1">
+
+			<td>{{record.no_passed}}</td>
+			<td>{{record.no_failed}}</td>
+			<td>{{record.time_stamp}}</td>
+			<td>{{record.description}}</td>
+			<td>{{record.expected_msg}}</td>
+		</tr>
+
+		
+	</tbody>
+</table>

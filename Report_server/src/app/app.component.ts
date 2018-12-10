@@ -12,8 +12,13 @@ export class AppComponent {
   public title = 'Report';
   public status_obj ;
   public chart;
+  public data;
+  public passed =0;
+  public failed =0;  
+  public percentage_passed=0;
+  public percentage_failed=0;
+  public percentage_unknown=0;
 
-  
   constructor(
     private status :PassService,
     //private canvas :CanvasJS
@@ -21,12 +26,29 @@ export class AppComponent {
 
   ) { }
 
+  compute(item){
+    
+    if(item.no_passed == 1){
+      this.passed+=1;
+    }
+  }
+
   display(data){
 
+    this.data=data;
+    let length=data.length;
+    let new_data=data.map((item)=>this.compute(item))
+     this.failed=length -this.passed;
+
+    //console.log('passed is '+this.passed+' failed is '+failed)
+    this.percentage_passed=(this.passed/length)*100;
+    this.percentage_failed=(this.failed/length)*100;
+    this.percentage_unknown=0;
+
     let dataPoints = [
-      {y: 79.45, label: "Passed"},
-			{y: 7.31, label: "Failed"},
-			{y: 7.06, label: "Unknown"}
+      {y: this.percentage_passed, label: "Passed Rate %"},
+			{y: this.percentage_failed, label: "Failure Rate in %"},
+			{y: this.percentage_unknown, label: "No Run(Manual test Verification required)"}
 		];
 		
 		let chart = new CanvasJS.Chart("chartContainer",{
